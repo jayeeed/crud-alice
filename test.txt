@@ -1,0 +1,11 @@
+curl --location 'https://stage.llm-api.myalice.ai/api/v1/tools/api' \
+-H 'authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMzA4MjE3LCJpYXQiOjE3NTMxNjY2MzUsImp0aSI6ImE3MzE5ZjVlM2E0OTQ1ZjdiOWU2Zjk4MjI4MjQ1MDIyIiwidXNlcl9pZCI6MjE1NH0.hyTCD7CZZRf99ztPMnxNmGQ1COL36n-nyqDW8fFQzuc' \
+-H 'Content-Type: application/json' \
+--data '{"agent_id":"068811a1-9f3f-7d17-8000-69bb96a9abbc"}'
+
+
+curl 'https://stage.llm-api.myalice.ai/api/v1/tools/api/0688136e-f55f-7701-8000-164e29ccff1b' \
+  -X 'PUT' \
+  -H 'authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMzA4MjE3LCJpYXQiOjE3NTMxNjY2MzUsImp0aSI6ImE3MzE5ZjVlM2E0OTQ1ZjdiOWU2Zjk4MjI4MjQ1MDIyIiwidXNlcl9pZCI6MjE1NH0.hyTCD7CZZRf99ztPMnxNmGQ1COL36n-nyqDW8fFQzuc' \
+  -H 'content-type: application/json' \
+  --data-raw '{"name":"create entry","description":"create entry","path":"https://rational-bison-kind.ngrok-free.app/items","body_type":"JSON","body":{"user_id":"{{myalice_meta.customer_id}}","name":"{{name}}","price":"{{price}}"},"method":"POST","notes":"","tool_definitions":[{"key":"name","type":"string","description":"","default":"","is_required":true},{"key":"price","type":"number","description":"","default":"","is_required":true}]}'

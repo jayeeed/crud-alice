@@ -1,0 +1,10 @@
+fastapi
+pydantic
+SQLAlchemy
+uvicorn
+psycopg2-binary
+typing_extensions
+python-dotenv
+apscheduler
+httpx
+pyngrok
