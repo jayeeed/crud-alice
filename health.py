@@ -6,12 +6,19 @@ scheduler = BackgroundScheduler()
 
 
 def ping_health_check():
-    url = "https://crud-alice.onrender.com/"
-    try:
-        response = httpx.get(url)
-        print(f"Health check status: {response.status_code}")
-    except Exception as e:
-        print(f"Health check failed: {e}")
+    urls = [
+        "https://crud-alice.onrender.com/",
+        "https://n8n-vl1r.onrender.com/",
+        "https://landcraft-be.onrender.com/",
+        "https://expense-tracker-llm-zm78.onrender.com/",
+    ]
+
+    for url in urls:
+        try:
+            response = httpx.get(url)
+            print(f"Health check for {url}: {response.status_code}")
+        except Exception as e:
+            print(f"Health check failed for {url}: {e}")
 
 
 # Initialize the scheduler
