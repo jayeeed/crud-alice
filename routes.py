@@ -16,12 +16,6 @@ async def root():
     return {"message": "CRUD API is running", "endpoints": ["/items", "/docs"]}
 
 
-@router.post("/test")
-async def test_item(item: ItemCreate):
-    logger.info(f"POST /test - Received item: {item.dict()}")
-    return {"received": item.dict(), "message": "Data validation successful"}
-
-
 @router.post("/items")
 async def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     logger.info(f"POST /items - Creating item")
@@ -56,24 +50,3 @@ async def patch_item(item_id: str, item: ItemUpdate, db: Session = Depends(get_d
 async def delete_item(item_id: str, db: Session = Depends(get_db)):
     logger.info(f"DELETE /items/{item_id} - Deleting item")
     return ItemService.delete_item(item_id, db)
-
-
-@router.get("/health")
-async def health_check(db: Session = Depends(get_db)):
-    """Health check endpoint for monitoring"""
-    logger.info("GET /health - Health check requested")
-    try:
-        # Test database connection
-        db.execute("SELECT 1")
-        return {
-            "status": "healthy",
-            "database": "connected",
-            "message": "Service is running normally"
-        }
-    except Exception as e:
-        logger.error(f"Health check failed: {e}")
-        return {
-            "status": "unhealthy", 
-            "database": "disconnected",
-            "error": str(e)
-        }
